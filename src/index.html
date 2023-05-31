@@ -2,16 +2,81 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Vanilla JavaScript App</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="To the top or bottom" />
+    <meta property="og:description" content="App to help us choose to the top or to the bottom">
+    <title>Who's next</title>
 </head>
 
 <body>
-  <main>
-    <h1>Vanilla JavaScript App</h1>
-  </main>
+    <section>
+        <label for="starter">Who started?:</label>
+
+        <select name="starter" id="starter">
+            <option value="Eliot">Eliot</option>
+            <option value="Fer">Fer</option>
+            <option value="Ipsita">Ipsita</option>
+            <option value="Jenn">Jenn</option>
+            <option value="Jhon">Jhon</option>
+            <option value="Justin">Justin</option>
+            <option value="Leo">Leo</option>
+            <option value="Marce">Marce</option>
+            <option value="Marlib">Marlib</option>
+            <option value="Nathan">Nathan</option>
+            <option value="Pam">Pam</option>
+            <option value="Pamela">Pamela</option>
+            <option value="Peter">Peter</option>
+            <option value="Rosa">Rosa</option>
+            <option value="Santi">Santi</option>
+            <option value="Sarah">Sarah</option>
+            <option value="Saul">Saul</option>
+            <option value="Suzanne">Suzanne</option>
+            <option value="Wayra">Wayra</option>
+        </select>
+        <label for="volunteered">Who volunteered after?:</label>
+
+        <select name="volunteered" id="volunteered">
+            <option value="Eliot">Eliot</option>
+            <option value="Fer">Fer</option>
+            <option value="Ipsita">Ipsita</option>
+            <option value="Jenn">Jenn</option>
+            <option value="Jhon">Jhon</option>
+            <option value="Justin">Justin</option>
+            <option value="Leo">Leo</option>
+            <option value="Marce">Marce</option>
+            <option value="Marlib">Marlib</option>
+            <option value="Nathan">Nathan</option>
+            <option value="Pam">Pam</option>
+            <option value="Pamela">Pamela</option>
+            <option value="Peter">Peter</option>
+            <option value="Rosa">Rosa</option>
+            <option value="Santi">Santi</option>
+            <option value="Sarah">Sarah</option>
+            <option value="Saul">Saul</option>
+            <option value="Suzanne">Suzanne</option>
+            <option value="Wayra">Wayra</option>
+        </select>
+        <button id="play">Find out</button>
+    </section>
+    <section>
+        <video hidden width="400" id="player" preload="auto" autoplay>
+            <source src="a.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+        </video>
+    </section>
+    <script>
+        window.onload = function () {
+            let player = document.getElementById("player"),
+                play = document.getElementById("play");
+
+            play.addEventListener("click", function () {
+                player.hidden = false;
+                player.play();
+            });
+        }
+    </script>
 </body>
 
 </html>
