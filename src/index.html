@@ -15,65 +15,81 @@
         <label for="starter">Who started?:</label>
 
         <select name="starter" id="starter">
-            <option value="Eliot">Eliot</option>
-            <option value="Fer">Fer</option>
-            <option value="Ipsita">Ipsita</option>
-            <option value="Jenn">Jenn</option>
-            <option value="Jhon">Jhon</option>
-            <option value="Justin">Justin</option>
-            <option value="Leo">Leo</option>
-            <option value="Marce">Marce</option>
-            <option value="Marlib">Marlib</option>
-            <option value="Nathan">Nathan</option>
-            <option value="Pam">Pam</option>
-            <option value="Pamela">Pamela</option>
-            <option value="Peter">Peter</option>
-            <option value="Rosa">Rosa</option>
-            <option value="Santi">Santi</option>
-            <option value="Sarah">Sarah</option>
-            <option value="Saul">Saul</option>
-            <option value="Suzanne">Suzanne</option>
-            <option value="Wayra">Wayra</option>
+            <option value="1">Eliot</option>
+            <option value="2">Fer</option>
+            <option value="3">Ipsita</option>
+            <option value="4">Jenn</option>
+            <option value="5">Jhon</option>
+            <option value="6">Justin</option>
+            <option value="7">Leo</option>
+            <option value="8">Marce</option>
+            <option value="9">Marlib</option>
+            <option value="10">Nathan</option>
+            <option value="11">Pam</option>
+            <option value="12">Pamela</option>
+            <option value="13">Peter</option>
+            <option value="14">Rosa</option>
+            <option value="15">Santi</option>
+            <option value="16">Sarah</option>
+            <option value="17">Saul</option>
+            <option value="18">Suzanne</option>
+            <option value="19">Wayra</option>
         </select>
         <label for="volunteered">Who volunteered after?:</label>
 
         <select name="volunteered" id="volunteered">
-            <option value="Eliot">Eliot</option>
-            <option value="Fer">Fer</option>
-            <option value="Ipsita">Ipsita</option>
-            <option value="Jenn">Jenn</option>
-            <option value="Jhon">Jhon</option>
-            <option value="Justin">Justin</option>
-            <option value="Leo">Leo</option>
-            <option value="Marce">Marce</option>
-            <option value="Marlib">Marlib</option>
-            <option value="Nathan">Nathan</option>
-            <option value="Pam">Pam</option>
-            <option value="Pamela">Pamela</option>
-            <option value="Peter">Peter</option>
-            <option value="Rosa">Rosa</option>
-            <option value="Santi">Santi</option>
-            <option value="Sarah">Sarah</option>
-            <option value="Saul">Saul</option>
-            <option value="Suzanne">Suzanne</option>
-            <option value="Wayra">Wayra</option>
+            <option value="1">Eliot</option>
+            <option value="2">Fer</option>
+            <option value="3">Ipsita</option>
+            <option value="4">Jenn</option>
+            <option value="5">Jhon</option>
+            <option value="6">Justin</option>
+            <option value="7">Leo</option>
+            <option value="8">Marce</option>
+            <option value="9">Marlib</option>
+            <option value="10">Nathan</option>
+            <option value="11">Pam</option>
+            <option value="12">Pamela</option>
+            <option value="13">Peter</option>
+            <option value="14">Rosa</option>
+            <option value="15">Santi</option>
+            <option value="16">Sarah</option>
+            <option value="17">Saul</option>
+            <option value="18">Suzanne</option>
+            <option value="19">Wayra</option>
         </select>
         <button id="play">Find out</button>
     </section>
-    <section>
-        <video hidden width="400" id="player" preload="auto" autoplay>
-            <source src="a.mp4" type="video/mp4">
-            Your browser does not support HTML video.
-        </video>
-    </section>
+    <section style="height: 500px;
+    text-align: center;
+    font-size: 6em;" id="result"></section>
     <script>
         window.onload = function () {
-            let player = document.getElementById("player"),
-                play = document.getElementById("play");
+            let play = document.getElementById("play");
 
             play.addEventListener("click", function () {
-                player.hidden = false;
-                player.play();
+                var isDown = true;
+                var totalAttendees = 19;
+                var starterElement = document.getElementById("starter");
+                var volunteerElement = document.getElementById("volunteered");
+                var starterValue = +starterElement.value;
+                var volunteerValue = +volunteerElement.value;
+                var text = ""
+                if (starterValue == volunteerValue) {
+                    text = "-.-"
+                } else {
+                    if (starterValue > volunteerValue) {
+                        var downDistance = (totalAttendees - starterValue) + volunteerValue;
+                        var upDistance = (totalAttendees - volunteerValue) - (totalAttendees - starterValue);
+                        isDown = downDistance < upDistance;
+                    } else {
+                        var downDistance = (totalAttendees - starterValue) - (totalAttendees - volunteerValue);
+                        var upDistance = starterValue + (totalAttendees - volunteerValue);
+                        isDown = downDistance < upDistance;
+                    }
+                    text = isDown ? "Down" : "Up"
+                }
+                document.getElementById("result").innerHTML = text;
             });
         }
     </script>
